@@ -12,7 +12,7 @@ res = ''
 while True:
     # 音声認識の区切り[\n.]まで受信
     while (res.find('\n.') == -1):
-        res += sock.recv(1024)
+        res += sock.recv(1024).decode('utf-8')
 
     # 認識文字列を抽出
     word = ''
