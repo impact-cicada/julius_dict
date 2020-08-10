@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 import socket
+import subprocess
 
-host = 'localhost'
-port = 10500
+# WAV再生コマンドフォーマット
+cmd_fmt = 'aplay -D plughw:3,0 ~/voice/enogu_voice/{}'
 
 # Julius接続
+host = 'localhost'
+port = 10500
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((host, port))
+
+def play_voice(name):
+    subprocess.call(cmd_fmt.format(name), shell=True)
 
 res = ''
 while True:
@@ -27,14 +33,18 @@ while True:
     print("WORD:"+word)
     if word == 'おはよう[/s]':
         print("=>おはよう")
+        play_voice('anzu_oha.wav')
 
     if word == 'おやすみ[/s]':
         print("=>おやすみ")
+        play_voice('anzu_oya.wav')
 
     if word == 'いってきます[/s]':
         print("=>いってらっしゃい")
+        play_voice('anzu_itte.wav')
 
     if word == 'ただいま[/s]':
         print("=>おかえり")
+        play_voice('anzu_oka.wav')
 
     res = ''
