@@ -101,3 +101,10 @@ mkdfa.pl greet
 julius -C ~/julius/dictation-kit-4.5/am-gmm.jconf -nostrip -gram ./greet -input mic
 ```
 「おはよう」か「お休み」のみで認識されるようになる
+
+## 音声認識チューニング課題
+```
+adWARNING: adin_thread_process: too long input (> 320000 samples), segmented now
+Warning: input buffer overflow: some input may be dropped, so disgard the input
+STAT: skip CMN parameter update since last input was invalid
+```
