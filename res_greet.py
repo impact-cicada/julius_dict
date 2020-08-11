@@ -18,11 +18,17 @@ port = 10500
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((host, port))
 
+def set_enable_mic(enable):
+    capture = '62' if enable else '0'
+    subprocess.call('amixer sset Mic {} -c 2'.format(capture), shell=True)
+
 def play_voice(name):
+    set_enable_mic(False)
     subprocess.call(cmd_fmt.format(name), shell=True)
+    set_enable_mic(True)
 
 def speak_response(word):
-    print("WORD:"+word)
+    print("WORD:" + word)
     if word == 'おはよう[/s]':
         print("=>おはよう")
         play_voice(random.choice(vlist_oha))
