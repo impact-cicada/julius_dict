@@ -32,6 +32,13 @@ https://osdn.net/dl/julius/dictation-kit-4.5.zip
 ```
 元サイト：http://julius.osdn.jp/index.php?q=dictation-kit.html
 
+## grammer-kitをダウンロード
+```
+https://github.com/julius-speech/grammar-kit/archive/v4.3.1.zip
+```
+元サイト：https://julius.osdn.jp/index.php?q=grammar-kit.html
+
+
 ## 展開
 ```
 mv ~/Downloads/dictation-kit-4.5.zip ./
@@ -57,6 +64,10 @@ nano ~/.profile
 ```
 cd dictation-kit-4.5
 julius -C main.jconf -C am-gmm.jconf -demo
+```
+```
+cd grammer-kit-4.3.1
+julius -C hmm_mono.jconf -demo
 ```
 マイクに向かって喋ってみる（この時点ではご認識多し）
 
@@ -100,6 +111,10 @@ mkdfa.pl greet
 ```
 julius -C ~/julius/dictation-kit-4.5/am-gmm.jconf -nostrip -gram ./greet -input mic
 ```
+```
+julius -C ~/julius/grammer-kit-4.3.1/hmm_mono.jconf -nostrip -gram ./greet -input mic
+```
+
 「おはよう」か「お休み」のみで認識されるようになる
 
 ## 音声認識チューニング課題
