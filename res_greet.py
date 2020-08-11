@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 import socket
 import subprocess
+import random
 
 # WAV再生コマンドフォーマット
 cmd_fmt = 'aplay -D plughw:3,0 ~/voice/enogu_voice/{}'
+
+# ボイスリスト
+vlist_oha = ['anzu_oha.wav',  'tamaki_oha.wav',  'haru_oha.wav',  'nao_oha.wav']
+vlist_oya = ['anzu_oya.wav',  'tamaki_oya.wav',  'haru_oya.wav',  'nao_oya.wav']
+vlist_itt = ['anzu_itte.wav', 'tamaki_itte.wav', 'haru_itte.wav', 'nao_itte.wav']
+vlist_oka = ['anzu_oka.wav',  'tamaki_oka.wav',  'haru_oka.wav',  'nao_oka.wav']
 
 # Julius接続
 host = 'localhost'
@@ -33,18 +40,18 @@ while True:
     print("WORD:"+word)
     if word == 'おはよう[/s]':
         print("=>おはよう")
-        play_voice('anzu_oha.wav')
+        play_voice(random.choice(vlist_oha))
 
     if word == 'おやすみ[/s]':
         print("=>おやすみ")
-        play_voice('anzu_oya.wav')
+        play_voice(random.choice(vlist_oya))
 
     if word == 'いってきます[/s]':
         print("=>いってらっしゃい")
-        play_voice('anzu_itte.wav')
+        play_voice(random.choice(vlist_itt))
 
     if word == 'ただいま[/s]':
         print("=>おかえり")
-        play_voice('anzu_oka.wav')
+        play_voice(random.choice(vlist_oka))
 
     res = ''
